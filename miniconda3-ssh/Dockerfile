@@ -1,0 +1,57 @@
+# python miniconda3 and openssh for vscode pycharm ssh interpreter
+# forked from  Aleksandar Diklic "https://github.com/rastasheep"
+# forked from https://github.com/ContinuumIO
+
+FROM ubuntu:bionic-20190912.1
+
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+ENV PATH /root/conda/bin:$PATH
+
+### ssh setting  #######################################
+
+RUN apt-get update --fix-missing && \
+    apt-get install -y --no-install-recommends \
+                openssh-server \
+                tmux vim wget git \
+                ca-certificates bzip2 curl && \
+    mkdir /var/run/sshd && \
+
+    echo 'root:root' |chpasswd && \
+
+    sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config && \
+
+    mkdir /root/.ssh && \
+
+
+### miniconda ##########################################
+
+
+    wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-4.7.10-Linux-x86_64.sh -O ~/miniconda.sh && \
+    /bin/bash ~/miniconda.sh -b -p /root/conda && \
+#    ln -s /root/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+#    echo ". /root/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+#    echo "conda activate base" >> ~/.bashrc && \
+    /root/conda/bin/conda update --all -y && \
+    /root/conda/bin/conda init && \
+    /bin/bash -c "source /root/.bashrc" && \
+
+## change python version #####
+#   /root/conda/bin/conda install python=3.6 -y  && \
+
+    /root/conda/bin/conda clean -afy && \
+    rm ~/miniconda.sh && \
+#    rm -rf /root/conda/pkgs && \
+
+### clean #########################################
+
+    apt-get autoclean && \
+    apt-get autoremove && \
+    rm -rf /var/lib/apt/lists/* \
+           /tmp/* \
+           /var/tmp/* && \
+    rm -rf /root/.cache
+
+EXPOSE 22 6006 8888
+CMD    [ "/usr/sbin/sshd", "-D"]
+# CMD [ "/bin/bash" ]
