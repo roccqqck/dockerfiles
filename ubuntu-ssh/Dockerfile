@@ -4,6 +4,7 @@ FROM       ubuntu:bionic-20190912.1
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
                 openssh-server && \
+    apt-get upgrade -y && \
  
     mkdir /var/run/sshd && \
 
