@@ -14,6 +14,7 @@ RUN apt-get update --fix-missing && \
                 openssh-server \
                 tmux vim wget git \
                 ca-certificates bzip2 curl && \
+    apt-get upgrade -y && \
     mkdir /var/run/sshd && \
 
     echo 'root:root' |chpasswd && \
@@ -27,21 +28,21 @@ RUN apt-get update --fix-missing && \
 ### miniconda ##########################################
 
 
-    wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-4.7.10-Linux-x86_64.sh -O ~/miniconda.sh && \
-    /bin/bash ~/miniconda.sh -b -p /root/conda && \
-#    ln -s /root/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
-#    echo ". /root/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-4.7.12-Linux-x86_64.sh -O ~/miniconda.sh && \
+    /bin/bash ~/miniconda.sh -b -p /root/miniconda3 && \
+#    ln -s /root/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+#    echo ". /root/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc && \
 #    echo "conda activate base" >> ~/.bashrc && \
-    /root/conda/bin/conda update --all -y && \
-    /root/conda/bin/conda init && \
+    /root/miniconda3/bin/conda update --all -y && \
+    /root/miniconda3/bin/conda init && \
     /bin/bash -c "source /root/.bashrc" && \
 
 ## change python version #####
-#   /root/conda/bin/conda install python=3.6 -y  && \
+#   /root/miniconda3/bin/conda install python=3.6 -y  && \
 
-    /root/conda/bin/conda clean -afy && \
+    /root/miniconda3/bin/conda clean -afy && \
     rm ~/miniconda.sh && \
-#    rm -rf /root/conda/pkgs && \
+#    rm -rf /root/miniconda3/pkgs && \
 
 ### clean #########################################
 
