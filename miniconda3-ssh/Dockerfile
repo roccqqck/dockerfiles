@@ -5,7 +5,7 @@
 FROM ubuntu:bionic-20190912.1
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV PATH /root/conda/bin:$PATH
+ENV PATH /root/miniconda3/bin:$PATH
 
 ### ssh setting  #######################################
 
@@ -38,7 +38,7 @@ RUN apt-get update --fix-missing && \
     /bin/bash -c "source /root/.bashrc" && \
 
 ## change python version #####
-#   /root/miniconda3/bin/conda install python=3.6 -y  && \
+#    /root/miniconda3/bin/conda install python=3.6 -y  && \
 
     /root/miniconda3/bin/conda clean -afy && \
     rm ~/miniconda.sh && \
