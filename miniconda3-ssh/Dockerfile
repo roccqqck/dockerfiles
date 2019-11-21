@@ -2,7 +2,7 @@
 # forked from  Aleksandar Diklic "https://github.com/rastasheep"
 # forked from https://github.com/ContinuumIO
 
-FROM ubuntu:bionic-20191010
+FROM ubuntu:bionic
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /root/miniconda3/bin:$PATH

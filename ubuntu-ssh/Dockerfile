@@ -1,4 +1,4 @@
-FROM       ubuntu:bionic-20191010
+FROM       ubuntu:bionic
 # forked from  Aleksandar Diklic "https://github.com/rastasheep"
 
 RUN apt-get update && \
