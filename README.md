@@ -5,6 +5,7 @@ https://hub.docker.com/u/roccqqck
 ```
 git clone https://github.com/roccqqck/dockerfiles
 cd dockerfiles/miniconda3-ssh
+ls -a
 ```
 會有一個```Dockerfile```
 ```
