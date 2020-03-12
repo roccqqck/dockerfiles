@@ -10,7 +10,6 @@ ENV PATH /root/.linuxbrew/bin:$PATH
 
 RUN apt-get update --fix-missing && \
     apt-get install -y --no-install-recommends \
-                openssh-server \
                 vim wget \
                 ca-certificates bzip2 software-properties-common \
                 build-essential curl file git locales && \
