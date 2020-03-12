@@ -28,7 +28,7 @@ RUN apt-get update --fix-missing && \
 ### miniconda ##########################################
 
 
-    wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-4.7.12.1-Linux-x86_64.sh -O ~/miniconda.sh && \
+    wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /root/miniconda3 && \
 #    ln -s /root/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
 #    echo ". /root/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc && \
