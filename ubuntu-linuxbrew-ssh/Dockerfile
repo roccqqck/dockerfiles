@@ -1,4 +1,4 @@
-# python miniconda3 and openssh for vscode pycharm ssh interpreter
+# linuxbrew ssh
 # forked from  Aleksandar Diklic "https://github.com/rastasheep"
 
 FROM ubuntu:18.04
