@@ -1,4 +1,4 @@
-FROM centos:centos8
+FROM centos:8
 # forked from Hiroki Takeyama "https://github.com/takeyamajp/docker-centos-sshd"  
 
 # sshd
@@ -17,14 +17,14 @@ RUN dnf check-update ; \
     dnf install git curl file -y ; \
     dnf install gcc make perl -y ; \
 
-    git clone https://github.com/Homebrew/brew /root/.linuxbrew/Homebrew ; \
-    mkdir /root/.linuxbrew/bin ; \
-    ln -s ../Homebrew/bin/brew /root/.linuxbrew/bin ; \
-    echo "eval $(~/.linuxbrew/bin/brew shellenv)" >> /root/.bash_profile ; \
+    git clone https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew/Homebrew ; \
+    mkdir /home/linuxbrew/.linuxbrew/bin ; \
+    ln -s /home/linuxbrew/.linuxbrew/Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin ; \
+    echo "eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" >> /root/.bash_profile ; \
     /bin/bash -c "source /root/.bash_profile" ; \
-    /root/.linuxbrew/bin/brew install hello ; \
-    /root/.linuxbrew/bin/brew uninstall hello ; \
-    /root/.linuxbrew/bin/brew cleanup ; \   
+    /home/linuxbrew/.linuxbrew/bin/brew install patchelf ; \
+    /home/linuxbrew/.linuxbrew/bin/brew uninstall patchelf ; \
+    /home/linuxbrew/.linuxbrew/bin/brew cleanup ; \   
  
 # clean
     dnf clean all; \
