@@ -4,7 +4,7 @@
 FROM ubuntu:18.04
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV PATH /root/.linuxbrew/bin:$PATH
+ENV PATH /home/linuxbrew/.linuxbrew/bin:$PATH
 
 ### apt setting  #######################################
 
@@ -17,15 +17,14 @@ RUN apt-get update --fix-missing && \
     apt-get upgrade -y && \
 
 ### linuxbrew ##########################################
-
-    git clone https://github.com/Homebrew/brew /root/.linuxbrew/Homebrew && \
-    mkdir /root/.linuxbrew/bin && \
-    ln -s ../Homebrew/bin/brew /root/.linuxbrew/bin && \
-    echo "eval $(~/.linuxbrew/bin/brew shellenv)" >> /root/.bashrc &&\
-    /bin/bash -c "source /root/.bashrc" && \
-    /root/.linuxbrew/bin/brew install hello && \
-    /root/.linuxbrew/bin/brew uninstall hello && \
-    /root/.linuxbrew/bin/brew cleanup && \
+    git clone https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew/Homebrew ; \
+    mkdir /home/linuxbrew/.linuxbrew/bin ; \
+    ln -s /home/linuxbrew/.linuxbrew/Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin ; \
+    echo "eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" >> /root/.bashrc ; \
+    /bin/bash -c "source /root/.bashrc" ; \
+    /home/linuxbrew/.linuxbrew/bin/brew install patchelf ; \
+    /home/linuxbrew/.linuxbrew/bin/brew uninstall patchelf ; \
+    /home/linuxbrew/.linuxbrew/bin/brew cleanup ; \
 
 ### clean #########################################
 
