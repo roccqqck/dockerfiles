@@ -1,10 +1,10 @@
-FROM       ubuntu:18.04
+FROM       ubuntu:20.04
 # forked from  Aleksandar Diklic "https://github.com/rastasheep"
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
                 openssh-server && \
-    apt-get upgrade -y && \
+   
  
     mkdir /var/run/sshd && \
 
