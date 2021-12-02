@@ -2,7 +2,7 @@ FROM alpine
 
 # copy data to "files" folder
 # COPY ./files /data/files
-
+WORKDIR "/data"
 RUN apk update ; \
     apk --no-cache add curl \
                        tar \
