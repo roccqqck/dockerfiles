@@ -1,8 +1,9 @@
-FROM centos:centos8
+FROM rockylinux:8
 # forked from Hiroki Takeyama "https://github.com/takeyamajp/docker-centos-sshd"  
 
 # sshd
-RUN dnf -y install  epel-release openssh-server; \
+RUN dnf -y install openssh-server; \
+#    dnf -y install epel-release; \
 #    dnf upgrade -y ; \
     sed -i 's/^\(UsePAM yes\)/# \1/' /etc/ssh/sshd_config; \
     ssh-keygen -q -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key -N '' ; \
